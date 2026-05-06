@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>คู่มือผู้ทรงคุณวุฒิ — ACTION 4th</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1f3c;
+    --navy-mid: #1a3560;
+    --blue: #1a56db;
+    --blue-lt: #4f86f7;
+    --amber: #f59e0b;
+    --teal: #0d9488;
+    --green: #16a34a;
+    --purple: #7c3aed;
+    --red: #dc2626;
+    --bg: #f4f7fc;
+    --white: #ffffff;
+    --border: #dde5f0;
+    --text: #1a2433;
+    --muted: #64748b;
+    --accent: #e8f0fe;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Sarabun', sans-serif;
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--navy);
+    color: #fff;
+    padding: 56px 0 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 90% 20%, rgba(79,134,247,.3) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 60% at 5% 90%, rgba(13,148,136,.2) 0%, transparent 60%);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245,158,11,.15);
+    border: 1px solid rgba(245,158,11,.35);
+    color: var(--amber);
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif Thai', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    color: rgba(255,255,255,.6);
+    max-width: 520px;
+    margin-bottom: 28px;
+  }
+
+  .hero-cred {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: .85rem;
+  }
+
+  .hero-cred .label { color: rgba(255,255,255,.45); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+  .hero-cred .val { color: rgba(255,255,255,.9); font-weight: 600; font-family: monospace; font-size: .9rem; }
+  .hero-cred-sep { width: 1px; height: 36px; background: rgba(255,255,255,.15); }
+
+  /* ─── NAV ─── */
+  .nav-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 8px rgba(0,0,0,.06);
+  }
+
+  .nav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 28px;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: .82rem;
+    font-weight: 600;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color .15s, border-color .15s;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+  }
+
+  /* ─── WRAPPER ─── */
+  .wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ─── CONTENT ─── */
+  .content { padding: 52px 0 80px; }
+
+  /* ─── SECTION ─── */
+  .section {
+    margin-bottom: 64px;
+    scroll-margin-top: 68px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .section-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif Thai', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .section-num {
+    font-size: .7rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ─── STEPS ─── */
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  .steps li {
+    counter-increment: step;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding: 16px 18px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: .92rem;
+    line-height: 1.75;
+    transition: box-shadow .15s;
+  }
+
+  .steps li:hover { box-shadow: 0 2px 12px rgba(26,86,219,.08); }
+
+  .steps li::before {
+    content: counter(step);
+    min-width: 30px;
+    height: 30px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .78rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ─── FLOW ─── */
+  .flow {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    margin: 20px 0;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .flow-step {
+    padding: 18px 14px;
+    background: var(--white);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+  }
+
+  .flow-step:last-child { border-right: none; }
+
+  .flow-step .fs-num {
+    font-size: .68rem;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .flow-step .fs-title {
+    font-size: .88rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .flow-step .fs-desc {
+    font-size: .76rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .flow-step .fs-icon {
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+  }
+
+  /* ─── NOTICE ─── */
+  .notice {
+    display: flex;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin: 16px 0;
+    font-size: .88rem;
+    line-height: 1.75;
+    align-items: flex-start;
+  }
+
+  .notice-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+  .notice.info { background: #eff6ff; border-left: 3px solid var(--blue-lt); color: #1d4ed8; }
+  .notice.warning { background: #fffbeb; border-left: 3px solid var(--amber); color: #92400e; }
+  .notice.danger { background: #fef2f2; border-left: 3px solid var(--red); color: #991b1b; }
+  .notice.success { background: #f0fdf4; border-left: 3px solid var(--green); color: #166534; }
+
+  /* ─── TABLE ─── */
+  .tbl-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin: 16px 0;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: .87rem; }
+  thead { background: var(--navy); color: #fff; }
+  thead th { padding: 12px 16px; font-weight: 600; text-align: left; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:nth-child(even) { background: #f8faff; }
+  tbody td { padding: 12px 16px; vertical-align: top; line-height: 1.65; }
+
+  /* ─── BADGE ─── */
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 50px;
+    font-size: .74rem;
+    font-weight: 700;
+  }
+
+  .badge-blue { background: #dbeafe; color: #1d4ed8; }
+  .badge-purple { background: #ede9fe; color: #6d28d9; }
+  .badge-green { background: #dcfce7; color: #15803d; }
+  .badge-amber { background: #fef3c7; color: #92400e; }
+  .badge-red { background: #fee2e2; color: #b91c1c; }
+
+  /* ─── RUBRIC ─── */
+  .rubric-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .rubric-card {
+    border-radius: 12px;
+    padding: 16px 18px;
+    border: 1.5px solid;
+  }
+
+  .rubric-card.excellent { background: #f0fdf4; border-color: #86efac; }
+  .rubric-card.good { background: #eff6ff; border-color: #93c5fd; }
+  .rubric-card.fair { background: #fffbeb; border-color: #fcd34d; }
+  .rubric-card.poor { background: #fef2f2; border-color: #fca5a5; }
+
+  .rubric-card .rc-label {
+    font-weight: 700;
+    font-size: .85rem;
+    margin-bottom: 4px;
+  }
+
+  .rubric-card.excellent .rc-label { color: #15803d; }
+  .rubric-card.good .rc-label { color: #1d4ed8; }
+  .rubric-card.fair .rc-label { color: #92400e; }
+  .rubric-card.poor .rc-label { color: #b91c1c; }
+
+  .rubric-card .rc-desc { font-size: .8rem; color: var(--muted); line-height: 1.6; }
+
+  /* ─── CRITERIA CARDS ─── */
+  .criteria-group {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .criteria-group-header {
+    padding: 12px 18px;
+    font-weight: 700;
+    font-size: .85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .criteria-group-header.research { background: #eff6ff; color: #1d4ed8; border-bottom: 1px solid #bfdbfe; }
+  .criteria-group-header.creative { background: #f5f3ff; color: #6d28d9; border-bottom: 1px solid #ddd6fe; }
+
+  /* ─── FAQ ─── */
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background: var(--white);
+  }
+
+  details summary {
+    padding: 16px 20px;
+    font-weight: 700;
+    font-size: .92rem;
+    color: var(--navy);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    user-select: none;
+  }
+
+  details summary::-webkit-details-marker { display: none; }
+
+  details summary::before {
+    content: 'Q';
+    min-width: 26px;
+    height: 26px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .72rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  details summary::after {
+    content: '+';
+    margin-left: auto;
+    font-size: 1.2rem;
+    color: var(--muted);
+    font-weight: 400;
+    transition: transform .2s;
+  }
+
+  details[open] summary::after { transform: rotate(45deg); }
+
+  .faq-answer {
+    padding: 0 20px 18px 56px;
+    font-size: .88rem;
+    color: var(--muted);
+    line-height: 1.85;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+
+  /* ─── LOGIN BOX ─── */
+  .login-box {
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border: 1.5px solid #86efac;
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+
+  .login-box h4 {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .login-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    font-size: .9rem;
+  }
+
+  .login-label {
+    width: 90px;
+    font-weight: 700;
+    color: var(--muted);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    flex-shrink: 0;
+  }
+
+  .login-val {
+    background: rgba(255,255,255,.7);
+    border: 1px solid #86efac;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-family: monospace;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--navy);
+    color: rgba(255,255,255,.45);
+    text-align: center;
+    padding: 28px;
+    font-size: .78rem;
+    line-height: 2;
+  }
+
+  .footer strong { color: rgba(255,255,255,.7); }
+
+  code {
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    padding: 1px 8px;
+    border-radius: 5px;
+    font-size: .83em;
+    font-family: 'Courier New', monospace;
+    color: #1d4ed8;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 1.6rem; }
+    .flow { grid-template-columns: 1fr 1fr; }
+    .rubric-grid { grid-template-columns: 1fr; }
+    .hero-cred { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .hero-cred-sep { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🎓 คู่มือสำหรับผู้ทรงคุณวุฒิ</div>
+    <h1>คู่มือการประเมินผลงาน<br>ACTION 4th</h1>
+    <p>สำหรับ Session Chair — คณะศิลปกรรมศาสตร์ มหาวิทยาลัยขอนแก่น</p>
+    <div class="hero-cred">
+      <div>
+        <span class="label">อีเมล</span>
+        <span class="val">อีเมลที่คณะกรรมการกำหนดให้</span>
+      </div>
+      <div class="hero-cred-sep"></div>
+      <div>
+        <span class="label">รหัสผ่านเริ่มต้น</span>
+        <span class="val">reviewer#action4</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<div class="nav-bar">
+  <div class="nav-inner">
+    <a class="nav-link" href="#login">🔐 เข้าสู่ระบบ</a>
+    <a class="nav-link" href="#steps">📝 ขั้นตอนการประเมิน</a>
+    <a class="nav-link" href="#rubric">📖 เกณฑ์การให้คะแนน</a>
+    <a class="nav-link" href="#criteria">📋 เกณฑ์ประเมิน</a>
+    <a class="nav-link" href="#result">✅ ดูผลที่ส่งแล้ว</a>
+    <a class="nav-link" href="#faq">❓ FAQ</a>
+  </div>
+</div>
+
+<!-- ═══ CONTENT ═══ -->
+<div class="content">
+<div class="wrapper">
+
+  <!-- ─── 1. เข้าสู่ระบบ ─── -->
+  <div class="section" id="login">
+    <div class="section-header">
+      <div class="section-icon" style="background:#eff6ff;color:var(--blue)">🔐</div>
+      <div>
+        <span class="section-num">ขั้นตอนที่ 1</span>
+        <div class="section-title">การเข้าสู่ระบบ</div>
+      </div>
+    </div>
+
+    <div class="login-box">
+      <h4>🎓 ข้อมูลสำหรับเข้าสู่ระบบ</h4>
+      <div class="login-row">
+        <div class="login-label">อีเมล</div>
+        <div class="login-val">อีเมลที่คณะกรรมการกำหนดให้</div>
+      </div>
+      <div class="login-row">
+        <div class="login-label">รหัสผ่าน</div>
+        <div class="login-val">reviewer#action4 <span style="font-family:sans-serif;font-size:.75rem;color:var(--muted)">(ค่าเริ่มต้น)</span></div>
+      </div>
+    </div>
+
+    <ol class="steps">
+      <li>เปิดเว็บเบราว์เซอร์ (แนะนำ Chrome หรือ Edge) แล้วเข้าสู่ URL ของระบบที่ได้รับจากคณะกรรมการ</li>
+      <li>กรอก <strong>อีเมล</strong> ในช่องที่กำหนด</li>
+      <li>กรอก <strong>รหัสผ่าน</strong> ในช่องที่กำหนด</li>
+      <li>กด <strong>Enter</strong> หรือคลิกปุ่ม <strong>"เข้าสู่ระบบ"</strong></li>
+      <li>ระบบจะพาไปยังหน้า <strong>ห้องที่ได้รับมอบหมาย</strong> ของท่านโดยอัตโนมัติ</li>
+    </ol>
+
+    <div class="notice info">
+      <span class="notice-icon">ℹ️</span>
+      <div>ระบบรองรับ Google Chrome, Microsoft Edge, Firefox และ Safari ทั้งบน Desktop และมือถือ</div>
+    </div>
+
+    <div class="notice warning">
+      <span class="notice-icon">⚠️</span>
+      <div>หากลืมรหัสผ่านหรือเข้าสู่ระบบไม่ได้ กรุณาติดต่อคณะกรรมการจัดโครงการโดยตรง ระบบไม่มีฟังก์ชัน "ลืมรหัสผ่าน" อัตโนมัติ</div>
+    </div>
+  </div>
+
+  <!-- ─── 2. ขั้นตอนการประเมิน ─── -->
+  <div class="section" id="steps">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fffbeb;color:var(--amber)">📝</div>
+      <div>
+        <span class="section-num">ขั้นตอนที่ 2</span>
+        <div class="section-title">ขั้นตอนการประเมินบทความ</div>
+      </div>
+    </div>
+
+    <p style="margin-bottom:20px;font-size:.95rem">เมื่อเข้าสู่ระบบแล้ว ท่านจะเห็นรายการ<strong>ห้องที่ได้รับมอบหมาย</strong> พร้อมบทความทุกชิ้นและสถานะการประเมิน ให้ดำเนินการตามขั้นตอนดังนี้</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <span class="fs-icon">🎯</span>
+        <span class="fs-num">ขั้นที่ 1</span>
+        <span class="fs-title">เลือกบทความ</span>
+        <span class="fs-desc">คลิกปุ่ม "ประเมิน" ข้างบทความที่ต้องการ</span>
+      </div>
+      <div class="flow-step">
+        <span class="fs-icon">✏️</span>
+        <span class="fs-num">ขั้นที่ 2</span>
+        <span class="fs-title">ให้คะแนน</span>
+        <span class="fs-desc">กรอกคะแนนแต่ละเกณฑ์ หรือเลือกจาก Rubric</span>
+      </div>
+      <div class="flow-step">
+        <span class="fs-icon">💬</span>
+        <span class="fs-num">ขั้นที่ 3</span>
+        <span class="fs-title">ข้อเสนอแนะ</span>
+        <span class="fs-desc">พิมพ์ความคิดเห็น (ไม่บังคับ)</span>
+      </div>
+      <div class="flow-step">
+        <span class="fs-icon">🔍</span>
+        <span class="fs-num">ขั้นที่ 4</span>
+        <span class="fs-title">ตรวจสอบ</span>
+        <span class="fs-desc">คลิก "ตรวจสอบและส่งผล" ดูสรุปคะแนน</span>
+      </div>
+      <div class="flow-step">
+        <span class="fs-icon">✅</span>
+        <span class="fs-num">ขั้นที่ 5</span>
+        <span class="fs-title">ยืนยันส่ง</span>
+        <span class="fs-desc">คลิก "ยืนยันส่งผล" เพื่อบันทึกถาวร</span>
+      </div>
+    </div>
+
+    <div class="notice danger">
+      <span class="notice-icon">🚫</span>
+      <div><strong>สำคัญมาก:</strong> เมื่อยืนยันส่งผลการประเมินแล้ว <strong>จะไม่สามารถแก้ไขได้อีก</strong> กรุณาตรวจสอบคะแนนทุกเกณฑ์ให้ถูกต้องก่อนกดยืนยัน</div>
+    </div>
+
+    <div class="notice success">
+      <span class="notice-icon">📈</span>
+      <div>ด้านบนของการ์ดแต่ละห้องมี<strong>แถบความคืบหน้า</strong> แสดงเปอร์เซ็นต์การประเมินที่เสร็จสิ้น เปลี่ยนสีจากแดง → เหลือง → เขียว เมื่อครบ 100%</div>
+    </div>
+  </div>
+
+  <!-- ─── 3. Rubric ─── -->
+  <div class="section" id="rubric">
+    <div class="section-header">
+      <div class="section-icon" style="background:#eff6ff;color:var(--blue)">📖</div>
+      <div>
+        <span class="section-num">ขั้นตอนที่ 3</span>
+        <div class="section-title">การใช้งาน Rubric (เกณฑ์การให้คะแนน)</div>
+      </div>
+    </div>
+
+    <p style="margin-bottom:16px;font-size:.95rem">แต่ละเกณฑ์มีปุ่ม <strong>"ดูเกณฑ์การให้คะแนน (Rubric)"</strong> คลิกเพื่อขยายดูรายละเอียด 4 ระดับ</p>
+
+    <div class="rubric-grid">
+      <div class="rubric-card excellent">
+        <div class="rc-label">🟢 ดีเยี่ยม — ช่วงคะแนนสูงสุด</div>
+        <div class="rc-desc">ทำได้ครบถ้วน ชัดเจน และมีคุณภาพสูง ตอบโจทย์ทุกด้านของเกณฑ์</div>
+      </div>
+      <div class="rubric-card good">
+        <div class="rc-label">🔵 ดี — ช่วงคะแนนสูง</div>
+        <div class="rc-desc">ทำได้ดีในส่วนใหญ่ แต่ยังมีบางจุดที่ขาดหายหรือต้องพัฒนาเพิ่มเติม</div>
+      </div>
+      <div class="rubric-card fair">
+        <div class="rc-label">🟡 พอใช้ — ช่วงคะแนนกลาง</div>
+        <div class="rc-desc">ทำได้บางส่วน ยังต้องการการพัฒนาอีกมากให้ครบถ้วนตามเกณฑ์</div>
+      </div>
+      <div class="rubric-card poor">
+        <div class="rc-label">🔴 ต้องปรับปรุง — ช่วงคะแนนต่ำ</div>
+        <div class="rc-desc">ยังไม่สามารถทำได้ตามเกณฑ์ที่กำหนด ต้องปรับปรุงอย่างมีนัยสำคัญ</div>
+      </div>
+    </div>
+
+    <div class="notice success">
+      <span class="notice-icon">💡</span>
+      <div>คลิกที่การ์ด Rubric ระดับใดก็ได้ ระบบจะ <strong>เติมคะแนนให้อัตโนมัติ</strong> โดยใช้คะแนนสูงสุดของระดับนั้น ท่านสามารถปรับเพิ่ม/ลดได้ในช่องกรอกตัวเลข</div>
+    </div>
+  </div>
+
+  <!-- ─── 4. เกณฑ์ประเมิน ─── -->
+  <div class="section" id="criteria">
+    <div class="section-header">
+      <div class="section-icon" style="background:#f5f3ff;color:var(--purple)">📋</div>
+      <div>
+        <span class="section-num">ข้อมูลอ้างอิง</span>
+        <div class="section-title">เกณฑ์การประเมิน (Rubric Score)</div>
+      </div>
+    </div>
+
+    <p style="margin-bottom:20px;font-size:.95rem">ระบบแบ่งเกณฑ์ประเมินตามประเภทของผลงาน <strong>ประเภทของบทความ</strong> จะกำหนดว่าท่านเห็นเกณฑ์ชุดใดในหน้าประเมิน</p>
+
+    <!-- Research -->
+    <div class="criteria-group">
+      <div class="criteria-group-header research">🔬 ผลงานวิจัยทางดนตรี (Research) — รวม 100 คะแนน (6 เกณฑ์)</div>
+      <div class="tbl-wrap" style="border:none;border-radius:0;margin:0">
+        <table>
+          <thead><tr><th>#</th><th>เกณฑ์</th><th>คะแนน</th><th>สิ่งที่ประเมิน</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>การตั้งโจทย์และแนวคิดวิจัย</td><td><span class="badge badge-blue">20</span></td><td>ระบุปัญหา วัตถุประสงค์ และประโยชน์ของงานได้ชัดเจน</td></tr>
+            <tr><td>2</td><td>ระเบียบวิธีและกระบวนการวิจัย</td><td><span class="badge badge-blue">25</span></td><td>เลือกวิธีการวิจัยเหมาะสม บันทึกขั้นตอนครบถ้วน</td></tr>
+            <tr><td>3</td><td>การวิเคราะห์และการตีความข้อมูล</td><td><span class="badge badge-blue">15</span></td><td>วิเคราะห์ข้อมูลดนตรีได้เป็นระบบ มีข้อค้นพบชัดเจน</td></tr>
+            <tr><td>4</td><td>การสรุปและการอภิปรายผล</td><td><span class="badge badge-blue">15</span></td><td>สรุปผลครบถ้วน เชื่อมโยงกับความรู้ดนตรีที่เกี่ยวข้อง</td></tr>
+            <tr><td>5</td><td>การนำเสนอและการสื่อสาร</td><td><span class="badge badge-blue">10</span></td><td>นำเสนอชัดเจน เข้าใจง่าย น่าสนใจ</td></tr>
+            <tr><td>6</td><td>จริยธรรมและความรับผิดชอบทางวิชาการ</td><td><span class="badge badge-blue">15</span></td><td>อ้างอิงถูกต้อง ตอบคำถามได้มั่นใจและสุภาพ</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Creative -->
+    <div class="criteria-group">
+      <div class="criteria-group-header creative">🎨 ผลงานสร้างสรรค์ทางดนตรี (Creative) — รวม 100 คะแนน (5 เกณฑ์)</div>
+      <div class="tbl-wrap" style="border:none;border-radius:0;margin:0">
+        <table>
+          <thead><tr><th>#</th><th>เกณฑ์</th><th>คะแนน</th><th>สิ่งที่ประเมิน</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>แนวคิดและที่มาของผลงาน</td><td><span class="badge badge-purple">20</span></td><td>ระบุที่มา เป้าหมาย และคุณค่าของผลงานได้ชัดเจน</td></tr>
+            <tr><td>2</td><td>กระบวนการทำงานและขั้นตอนการสร้างสรรค์</td><td><span class="badge badge-purple">25</span></td><td>บันทึกขั้นตอนครบ เห็นพัฒนาการของงาน</td></tr>
+            <tr><td>3</td><td>การสะท้อนและสิ่งที่ได้เรียนรู้</td><td><span class="badge badge-purple">25</span></td><td>ระบุปัญหาที่พบและการแก้ไข สะท้อนการเติบโตด้านดนตรี</td></tr>
+            <tr><td>4</td><td>การนำเสนอและการสื่อสาร</td><td><span class="badge badge-purple">15</span></td><td>นำเสนอชัดเจน เชื่อมโยงกับความรู้ดนตรี</td></tr>
+            <tr><td>5</td><td>จริยธรรมและความรับผิดชอบทางวิชาการ</td><td><span class="badge badge-purple">15</span></td><td>อ้างอิงถูกต้อง ตอบคำถามอย่างมั่นใจ</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="notice info">
+      <span class="notice-icon">ℹ️</span>
+      <div>ประเภทของบทความ (Research / Creative) จะแสดงให้เห็นชัดเจนในหน้าประเมิน ท่านไม่ต้องเลือกเอง ระบบจะโหลดเกณฑ์ที่ถูกต้องให้อัตโนมัติ</div>
+    </div>
+  </div>
+
+  <!-- ─── 5. ดูผลที่ส่งแล้ว ─── -->
+  <div class="section" id="result">
+    <div class="section-header">
+      <div class="section-icon" style="background:#f0fdf4;color:var(--teal)">✅</div>
+      <div>
+        <span class="section-num">ข้อมูลเพิ่มเติม</span>
+        <div class="section-title">การดูผลการประเมินที่ส่งแล้ว</div>
+      </div>
+    </div>
+
+    <p style="font-size:.95rem;margin-bottom:16px">บทความที่ส่งผลแล้วจะแสดงปุ่ม <span class="badge badge-green">ประเมินแล้ว · ดูผล</span> บนการ์ดบทความ</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>สิ่งที่แสดง</th><th>รายละเอียด</th></tr></thead>
+        <tbody>
+          <tr><td>คะแนนแต่ละเกณฑ์</td><td>คะแนนที่ท่านให้ไว้ในแต่ละด้าน</td></tr>
+          <tr><td>คะแนนรวมและร้อยละ</td><td>คะแนนรวม ÷ คะแนนเต็ม × 100</td></tr>
+          <tr><td>ข้อเสนอแนะ</td><td>ความคิดเห็นที่ท่านเคยกรอกไว้</td></tr>
+          <tr><td>วันที่/เวลาที่ส่ง</td><td>ประวัติการส่งผล</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notice warning">
+      <span class="notice-icon">⚠️</span>
+      <div>ผลการประเมินที่ส่งแล้ว <strong>ไม่สามารถแก้ไขได้</strong> หากจำเป็นต้องแก้ไข กรุณาติดต่อคณะกรรมการจัดโครงการเพื่อดำเนินการในฐานข้อมูลโดยตรง</div>
+    </div>
+  </div>
+
+  <!-- ─── 6. FAQ ─── -->
+  <div class="section" id="faq">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fff7ed;color:var(--amber)">❓</div>
+      <div>
+        <span class="section-num">คำถามที่พบบ่อย</span>
+        <div class="section-title">FAQ สำหรับผู้ทรงคุณวุฒิ</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>ลืมรหัสผ่านต้องทำอย่างไร?</summary>
+        <div class="faq-answer">กรุณาติดต่อคณะกรรมการจัดโครงการโดยตรง ผ่านอีเมล <strong>action4@kku.ac.th</strong> Admin สามารถแก้ไขรหัสผ่านให้ท่านได้จากระบบ โดยไม่มีฟังก์ชัน "ลืมรหัสผ่าน" อัตโนมัติ</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>ส่งผลการประเมินไปแล้ว แต่ต้องการแก้ไข ทำได้หรือไม่?</summary>
+        <div class="faq-answer">ไม่ได้ ระบบออกแบบให้ส่งผลได้<strong>ครั้งเดียว</strong>เพื่อความน่าเชื่อถือของข้อมูล หากจำเป็นต้องแก้ไขกรุณาแจ้งคณะกรรมการ ซึ่งจะต้องดำเนินการแก้ไขในฐานข้อมูล Google Spreadsheet โดยตรง</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>ฉันเห็นห้องไม่ครบ หรือไม่พบบทความ ต้องทำอย่างไร?</summary>
+        <div class="faq-answer">ระบบแสดงเฉพาะห้องที่คณะกรรมการมอบหมายให้ท่านเท่านั้น หากคิดว่าการมอบหมายมีข้อผิดพลาด กรุณาติดต่อคณะกรรมการเพื่อให้ Admin ปรับแก้ไขการมอบหมายห้องในระบบ</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>บทความประเภท Research และ Creative ต่างกันอย่างไรในการประเมิน?</summary>
+        <div class="faq-answer">ต่างกันที่ชุดเกณฑ์ที่ใช้ประเมิน: <strong>Research</strong> ใช้ 6 เกณฑ์ เน้นกระบวนการวิจัยและการวิเคราะห์ข้อมูล ส่วน <strong>Creative</strong> ใช้ 5 เกณฑ์ เน้นกระบวนการสร้างสรรค์และการสะท้อนการเรียนรู้ ทั้งสองประเภทมีคะแนนรวม 100 คะแนนเท่ากัน ระบบจะโหลดเกณฑ์ที่ถูกต้องให้อัตโนมัติ</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>ฉันสามารถประเมินห้องที่ไม่ได้รับมอบหมายได้หรือไม่?</summary>
+        <div class="faq-answer">ไม่ได้ ระบบแสดงเฉพาะห้องที่มอบหมายให้แต่ละคนเท่านั้น คณะกรรมการต้องแก้ไขการมอบหมายห้องผ่านระบบก่อน ท่านจึงจะสามารถเข้าประเมินได้</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>หน้าจอแสดงผลผิดปกติ หรือโหลดช้า ต้องทำอย่างไร?</summary>
+        <div class="faq-answer">ลองทำตามขั้นตอนต่อไปนี้: (1) รีเฟรชหน้าเว็บ (Ctrl+R หรือ F5) (2) ล้าง Cache ของเบราว์เซอร์ (3) ลองเปิดในโหมด Incognito (4) ลองเปลี่ยนเบราว์เซอร์ หากยังมีปัญหากรุณาติดต่อคณะกรรมการ</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>ต้องกรอกข้อเสนอแนะในทุกบทความหรือไม่?</summary>
+        <div class="faq-answer">ไม่บังคับ ช่องข้อเสนอแนะเป็นตัวเลือก ท่านสามารถเลือกกรอกหรือไม่กรอกก็ได้ อย่างไรก็ตาม การให้ข้อเสนอแนะที่สร้างสรรค์จะเป็นประโยชน์ต่อผู้นำเสนออย่างมาก</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>ระบบคำนวณคะแนนอย่างไร?</summary>
+        <div class="faq-answer">คะแนนสุดท้ายของแต่ละบทความคือ<strong>ค่าเฉลี่ย</strong>จากผู้ทรงคุณวุฒิทุกคนที่ประเมินบทความนั้น โดย: คะแนนรวม ÷ คะแนนเต็ม × 100 = ร้อยละ แล้วนำค่าเฉลี่ยของร้อยละจากผู้ทรงคุณวุฒิทุกท่านมาจัดอันดับ</div>
+      </details>
+    </div>
+
+  </div>
+
+  <!-- ─── ติดต่อ ─── -->
+  <div style="text-align:center;padding:20px 0;border-top:1px solid var(--border)">
+    <p style="font-size:.85rem;color:var(--muted)">สอบถามข้อมูลเพิ่มเติมติดต่อคณะกรรมการจัดโครงการ ACTION 4th</p>
+    <p style="font-size:.9rem;font-weight:700;color:var(--navy);margin-top:4px">📧 action4@kku.ac.th</p>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <strong>คู่มือผู้ทรงคุณวุฒิ — ระบบประเมินการนำเสนอผลงาน ACTION 4th v2.0</strong><br>
+  คณะศิลปกรรมศาสตร์ มหาวิทยาลัยขอนแก่น &nbsp;·&nbsp; Copyright &copy; 2569
+</div>
+
+<script>
+  // Highlight nav on scroll
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

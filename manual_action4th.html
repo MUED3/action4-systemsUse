@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>คู่มือการใช้งาน — ระบบประเมินการนำเสนอผลงาน ACTION 4th</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1f3c;
+    --navy-mid: #1a3560;
+    --blue: #1a56db;
+    --blue-lt: #4f86f7;
+    --amber: #f59e0b;
+    --teal: #0d9488;
+    --green: #16a34a;
+    --purple: #7c3aed;
+    --red: #dc2626;
+    --bg: #f8f9fc;
+    --white: #ffffff;
+    --border: #e2e8f3;
+    --text: #1a2433;
+    --muted: #64748b;
+    --light: #f1f5fb;
+    --accent: #e8f0fe;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Sarabun', sans-serif;
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* ─── LAYOUT ─── */
+  .wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    background: var(--navy);
+    color: #fff;
+    padding: 72px 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 40%, rgba(26,86,219,.35) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 10% 80%, rgba(13,148,136,.2) 0%, transparent 60%);
+  }
+
+  .cover-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-tag {
+    display: inline-block;
+    background: rgba(245,158,11,.18);
+    border: 1px solid rgba(245,158,11,.4);
+    color: var(--amber);
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 50px;
+    margin-bottom: 22px;
+  }
+
+  .cover h1 {
+    font-family: 'Noto Serif Thai', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+
+  .cover p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,.65);
+    max-width: 560px;
+    margin-bottom: 32px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cover-meta-item .label {
+    font-size: .72rem;
+    color: rgba(255,255,255,.45);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .cover-meta-item .val {
+    font-size: .9rem;
+    color: rgba(255,255,255,.85);
+    font-weight: 600;
+  }
+
+  /* ─── TOC ─── */
+  .toc-wrap {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 0;
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: .88rem;
+    font-weight: 500;
+    transition: background .15s, color .15s;
+    border: 1px solid transparent;
+  }
+
+  .toc-item:hover {
+    background: var(--accent);
+    border-color: var(--border);
+    color: var(--blue);
+  }
+
+  .toc-num {
+    width: 26px;
+    height: 26px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ─── CONTENT ─── */
+  .content {
+    padding: 60px 0 80px;
+  }
+
+  /* ─── SECTION ─── */
+  .section {
+    margin-bottom: 60px;
+    scroll-margin-top: 20px;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background: var(--blue);
+    border-radius: 2px;
+  }
+
+  .section h2 {
+    font-family: 'Noto Serif Thai', serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  /* ─── SUBSECTION ─── */
+  .subsection {
+    margin-bottom: 32px;
+  }
+
+  .subsection h3 {
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--navy-mid);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .subsection h3 .icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .85rem;
+    flex-shrink: 0;
+  }
+
+  p, li {
+    font-size: .95rem;
+    line-height: 1.85;
+    color: #2d3a4f;
+  }
+
+  /* ─── ROLE CARDS ─── */
+  .role-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .role-card {
+    border-radius: 14px;
+    padding: 22px 24px;
+    border: 1.5px solid var(--border);
+  }
+
+  .role-card.admin {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border-color: #93c5fd;
+  }
+
+  .role-card.reviewer {
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border-color: #86efac;
+  }
+
+  .role-card .role-icon {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .role-card h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--navy);
+  }
+
+  .role-card p {
+    font-size: .85rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .role-card .role-cred {
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,.65);
+    border-radius: 8px;
+    font-size: .8rem;
+  }
+
+  .role-card .role-cred strong {
+    color: var(--navy);
+  }
+
+  /* ─── STEPS ─── */
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  .steps li {
+    counter-increment: step;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    padding: 14px 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    font-size: .9rem;
+    line-height: 1.7;
+  }
+
+  .steps li::before {
+    content: counter(step);
+    min-width: 28px;
+    height: 28px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .78rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ─── NOTICE BOXES ─── */
+  .notice {
+    display: flex;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 11px;
+    margin: 16px 0;
+    font-size: .88rem;
+    line-height: 1.75;
+    align-items: flex-start;
+  }
+
+  .notice-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .notice.info {
+    background: #eff6ff;
+    border-left: 3px solid var(--blue-lt);
+    color: #1d4ed8;
+  }
+
+  .notice.warning {
+    background: #fffbeb;
+    border-left: 3px solid var(--amber);
+    color: #92400e;
+  }
+
+  .notice.danger {
+    background: #fef2f2;
+    border-left: 3px solid var(--red);
+    color: #991b1b;
+  }
+
+  .notice.success {
+    background: #f0fdf4;
+    border-left: 3px solid var(--green);
+    color: #166534;
+  }
+
+  /* ─── TABLE ─── */
+  .tbl-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin: 16px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .88rem;
+  }
+
+  thead {
+    background: var(--navy);
+    color: #fff;
+  }
+
+  thead th {
+    padding: 11px 15px;
+    font-weight: 600;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody tr:nth-child(even) { background: #f8faff; }
+
+  tbody td {
+    padding: 11px 15px;
+    vertical-align: top;
+    line-height: 1.65;
+  }
+
+  /* ─── BADGES ─── */
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 50px;
+    font-size: .75rem;
+    font-weight: 700;
+  }
+
+  .badge-blue { background: #dbeafe; color: #1d4ed8; }
+  .badge-purple { background: #ede9fe; color: #6d28d9; }
+  .badge-green { background: #dcfce7; color: #15803d; }
+  .badge-amber { background: #fef3c7; color: #92400e; }
+  .badge-red { background: #fee2e2; color: #b91c1c; }
+  .badge-teal { background: #ccfbf1; color: #0f766e; }
+
+  /* ─── CRITERIA TABLE ─── */
+  .crit-group {
+    margin-bottom: 20px;
+  }
+
+  .crit-group-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .82rem;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .crit-group-label.research {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+  }
+
+  .crit-group-label.creative {
+    background: #f5f3ff;
+    color: #6d28d9;
+    border: 1px solid #ddd6fe;
+  }
+
+  /* ─── RUBRIC TABLE ─── */
+  .rubric-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .82rem;
+    margin-bottom: 10px;
+  }
+
+  .rubric-table th {
+    background: #f1f5f9;
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid var(--border);
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .rubric-table td {
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  .rubric-table tr:nth-child(1) td:first-child { border-left: 3px solid var(--green); }
+  .rubric-table tr:nth-child(2) td:first-child { border-left: 3px solid var(--blue); }
+  .rubric-table tr:nth-child(3) td:first-child { border-left: 3px solid var(--amber); }
+  .rubric-table tr:nth-child(4) td:first-child { border-left: 3px solid var(--red); }
+
+  /* ─── FLOW ─── */
+  .flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+
+  .flow-step {
+    flex: 1;
+    min-width: 130px;
+    padding: 16px 14px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-right: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+  }
+
+  .flow-step:first-child { border-radius: 11px 0 0 11px; }
+  .flow-step:last-child { border-radius: 0 11px 11px 0; border-right: 1px solid var(--border); }
+
+  .flow-step::after {
+    content: '›';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    color: var(--muted);
+    z-index: 1;
+    background: var(--bg);
+    padding: 0 2px;
+  }
+
+  .flow-step:last-child::after { display: none; }
+
+  .flow-step .fs-num {
+    font-size: .72rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: .1em;
+  }
+
+  .flow-step .fs-title {
+    font-size: .88rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .flow-step .fs-desc {
+    font-size: .76rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ─── CODE INLINE ─── */
+  code {
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    padding: 1px 8px;
+    border-radius: 5px;
+    font-size: .83em;
+    font-family: 'Courier New', monospace;
+    color: #1d4ed8;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background: var(--white);
+  }
+
+  .faq-q {
+    padding: 14px 18px;
+    font-weight: 700;
+    font-size: .92rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    color: var(--navy);
+  }
+
+  .faq-q::before {
+    content: 'Q';
+    min-width: 24px;
+    height: 24px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .72rem;
+    font-weight: 800;
+  }
+
+  .faq-a {
+    padding: 0 18px 16px 52px;
+    font-size: .88rem;
+    color: var(--muted);
+    line-height: 1.8;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--navy);
+    color: rgba(255,255,255,.5);
+    text-align: center;
+    padding: 28px;
+    font-size: .8rem;
+    line-height: 2;
+  }
+
+  .footer strong { color: rgba(255,255,255,.8); }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 28px 0;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .cover h1 { font-size: 1.7rem; }
+    .role-cards { grid-template-columns: 1fr; }
+    .flow { flex-direction: column; }
+    .flow-step { border-right: 1px solid var(--border); border-bottom: none; border-radius: 0; }
+    .flow-step:first-child { border-radius: 11px 11px 0 0; }
+    .flow-step:last-child { border-radius: 0 0 11px 11px; border-bottom: 1px solid var(--border); }
+    .flow-step::after { content: '↓'; right: auto; left: 50%; transform: translateX(-50%); top: auto; bottom: -14px; }
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    .cover { background: var(--navy) !important; -webkit-print-color-adjust: exact; }
+    body { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ COVER ═══ -->
+<div class="cover">
+  <div class="wrapper">
+    <div class="cover-inner">
+      <div class="cover-tag">📄 คู่มือการใช้งานระบบ</div>
+      <h1>ระบบประเมินการนำเสนอผลงาน<br>ACTION 4th</h1>
+      <p>Session Reviewer System — คณะศิลปกรรมศาสตร์ มหาวิทยาลัยขอนแก่น</p>
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <span class="label">เวอร์ชัน</span>
+          <span class="val">v2.0</span>
+        </div>
+        <div class="cover-meta-item">
+          <span class="label">ระบบ</span>
+          <span class="val">Google Apps Script + Spreadsheet</span>
+        </div>
+        <div class="cover-meta-item">
+          <span class="label">ผู้ใช้งาน</span>
+          <span class="val">คณะกรรมการ &amp; ผู้ทรงคุณวุฒิ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TOC ═══ -->
+<div class="toc-wrap">
+  <div class="wrapper">
+    <p style="font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">สารบัญ</p>
+    <div class="toc-grid">
+      <a class="toc-item" href="#overview"><div class="toc-num">1</div> ภาพรวมระบบ</a>
+      <a class="toc-item" href="#login"><div class="toc-num">2</div> การเข้าสู่ระบบ</a>
+      <a class="toc-item" href="#admin"><div class="toc-num">3</div> คณะกรรมการจัดโครงการ</a>
+      <a class="toc-item" href="#reviewer"><div class="toc-num">4</div> ผู้ทรงคุณวุฒิ</a>
+      <a class="toc-item" href="#criteria"><div class="toc-num">5</div> เกณฑ์การประเมิน (Rubric)</a>
+      <a class="toc-item" href="#results"><div class="toc-num">6</div> ผลการประเมินและรางวัล</a>
+      <a class="toc-item" href="#csv"><div class="toc-num">7</div> การนำเข้า/ส่งออก CSV</a>
+      <a class="toc-item" href="#faq"><div class="toc-num">8</div> คำถามที่พบบ่อย</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONTENT ═══ -->
+<div class="content">
+  <div class="wrapper">
+
+    <!-- ─── 1. ภาพรวม ─── -->
+    <div class="section" id="overview">
+      <div class="section-label">หัวข้อที่ 1</div>
+      <h2>ภาพรวมระบบ</h2>
+
+      <p>ระบบประเมินการนำเสนอผลงาน ACTION 4th เป็นเครื่องมือสำหรับบริหารจัดการการประเมินบทความและผลงานในการประชุมวิชาการ รองรับทั้งผลงานประเภท <strong>วิจัย (Research)</strong> และ <strong>สร้างสรรค์ (Creative)</strong> โดยใช้ระบบ Rubric Score แบบ 4 ระดับ</p>
+
+      <div class="role-cards">
+        <div class="role-card admin">
+          <div class="role-icon">🏛️</div>
+          <h4>คณะกรรมการจัดโครงการ (Admin)</h4>
+          <p>มีสิทธิ์เต็มในการจัดการระบบ ตั้งแต่สร้างห้อง เพิ่มบทความ มอบหมายผู้ทรงคุณวุฒิ ดูผลคะแนน และส่งออกรายงาน</p>
+          <div class="role-cred"><strong>อีเมล:</strong> action4@kku.ac.th<br><strong>รหัสผ่าน:</strong> action#4kku</div>
+        </div>
+        <div class="role-card reviewer">
+          <div class="role-icon">🎓</div>
+          <h4>ผู้ทรงคุณวุฒิ (Session Chair)</h4>
+          <p>เข้าถึงเฉพาะห้องที่ได้รับมอบหมาย ประเมินบทความแต่ละชิ้นตามเกณฑ์ Rubric และส่งผลการประเมิน</p>
+          <div class="role-cred"><strong>อีเมล:</strong> อีเมลที่คณะกรรมการกำหนดให้<br><strong>รหัสผ่าน:</strong> ตามที่กำหนด (ค่าเริ่มต้น: <code>reviewer#action4</code>)</div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3><span class="icon" style="background:#eff6ff;color:var(--blue)">⚙️</span> โครงสร้างข้อมูลในระบบ</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr><th>ส่วนข้อมูล</th><th>คำอธิบาย</th><th>ตัวอย่าง</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>ห้องนำเสนอ</strong></td><td>พื้นที่แบ่งกลุ่มบทความ แต่ละห้องมีผู้ทรงคุณวุฒิ 2 คน</td><td>ห้อง A — ดนตรีสากล</td></tr>
+              <tr><td><strong>บทความ</strong></td><td>รายการผลงานที่นำเสนอในแต่ละห้อง มีลำดับ ชื่อ ผู้เขียน และประเภท</td><td>การวิเคราะห์ดนตรีพื้นบ้านอีสาน</td></tr>
+              <tr><td><strong>ผู้ทรงคุณวุฒิ</strong></td><td>ผู้ประเมิน ระบุอีเมล รหัสผ่าน และห้องที่รับผิดชอบ</td><td>อ.สมชาย ดนตรีดี</td></tr>
+              <tr><td><strong>เกณฑ์การประเมิน</strong></td><td>หัวข้อและคะแนนแต่ละด้าน แยกตามประเภท Research/Creative</td><td>การตั้งโจทย์วิจัย (20 คะแนน)</td></tr>
+              <tr><td><strong>ผลการประเมิน</strong></td><td>คะแนนที่แต่ละผู้ทรงคุณวุฒิให้ต่อ 1 บทความ บันทึกครั้งเดียว แก้ไขไม่ได้</td><td>85/100 = 85%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── 2. เข้าสู่ระบบ ─── -->
+    <div class="section" id="login">
+      <div class="section-label">หัวข้อที่ 2</div>
+      <h2>การเข้าสู่ระบบ</h2>
+
+      <ol class="steps">
+        <li>เปิดเว็บเบราว์เซอร์และเข้าสู่ URL ของระบบที่ได้รับจากคณะกรรมการ</li>
+        <li>กรอก <strong>อีเมล</strong> ในช่อง "อีเมล"</li>
+        <li>กรอก <strong>รหัสผ่าน</strong> ในช่อง "รหัสผ่าน"</li>
+        <li>กด <strong>Enter</strong> หรือคลิกปุ่ม <strong>"เข้าสู่ระบบ"</strong></li>
+        <li>ระบบจะนำทางไปยังหน้าที่เหมาะสมตามบทบาท (Admin หรือ Reviewer)</li>
+      </ol>
+
+      <div class="notice warning">
+        <span class="notice-icon">⚠️</span>
+        <div>หากลืมรหัสผ่าน กรุณาติดต่อคณะกรรมการจัดโครงการ ระบบไม่มีฟังก์ชัน "ลืมรหัสผ่าน" อัตโนมัติ</div>
+      </div>
+
+      <div class="notice info">
+        <span class="notice-icon">ℹ️</span>
+        <div>ระบบรองรับการทำงานบน Google Chrome, Microsoft Edge, Firefox และ Safari บนทั้ง Desktop และมือถือ</div>
+      </div>
+    </div>
+
+    <!-- ─── 3. Admin ─── -->
+    <div class="section" id="admin">
+      <div class="section-label">หัวข้อที่ 3</div>
+      <h2>คณะกรรมการจัดโครงการ (Admin)</h2>
+
+      <p>เมื่อเข้าสู่ระบบในฐานะ Admin จะพบ Dashboard หลักซึ่งแบ่งเป็น 4 แท็บ ได้แก่ ห้องนำเสนอ / ผู้ทรงคุณวุฒิ / เกณฑ์ประเมิน / ผลการประเมิน</p>
+
+      <!-- 3.1 สถิติ -->
+      <div class="subsection">
+        <h3><span class="icon" style="background:#f0fdf4;color:var(--green)">📊</span> แถบสถิติภาพรวม</h3>
+        <p>ด้านบนสุดแสดงสถิติสรุป 5 รายการ ได้แก่ จำนวนห้องนำเสนอ / บทความทั้งหมด / ผู้ทรงคุณวุฒิ / เกณฑ์ประเมิน / และจำนวนการประเมินที่ส่งแล้ว ข้อมูลนี้อัปเดตทันทีเมื่อโหลดหน้า</p>
+      </div>
+
+      <!-- 3.2 ห้องนำเสนอ -->
+      <div class="subsection">
+        <h3><span class="icon" style="background:#eff6ff;color:var(--blue)">🚪</span> การจัดการห้องนำเสนอ</h3>
+
+        <p style="margin-bottom:10px">ห้องนำเสนอเป็นกลุ่มหลักสำหรับแบ่งบทความ คณะกรรมการสามารถสร้าง แก้ไข และลบห้องได้</p>
+
+        <p><strong>การเพิ่มห้องใหม่ (แบบฟอร์ม)</strong></p>
+        <ol class="steps">
+          <li>คลิกปุ่ม <strong>"+ เพิ่มห้องใหม่"</strong> มุมขวาบน</li>
+          <li>กรอกชื่อห้อง (บังคับ) เช่น <em>ห้อง A — ดนตรีสากล</em></li>
+          <li>กรอกคำอธิบาย URL เอกสาร และหมายเหตุ (ตามต้องการ)</li>
+          <li>คลิก <strong>"บันทึก"</strong></li>
+        </ol>
+
+        <p style="margin:12px 0 8px"><strong>ข้อมูลที่แสดงในการ์ดห้อง</strong></p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>รายการ</th><th>ความหมาย</th></tr></thead>
+            <tbody>
+              <tr><td>ชื่อห้อง</td><td>ชื่อที่ตั้งไว้</td></tr>
+              <tr><td>จำนวนบทความ / วิจัย / สร้างสรรค์</td><td>สรุปบทความในห้อง</td></tr>
+              <tr><td>ประเมินแล้ว</td><td>จำนวนครั้งที่มีการส่งผลประเมิน</td></tr>
+              <tr><td>Session Chair</td><td>ผู้ทรงคุณวุฒิที่รับผิดชอบห้องนี้ (แนะนำ 2 คน)</td></tr>
+              <tr><td>เอกสารประจำห้อง</td><td>ลิงก์ไปยัง Google Drive หรือเอกสารอื่น</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="margin-top:12px"><strong>ปุ่มในการ์ดแต่ละห้อง</strong></p>
+        <ul style="list-style:none;margin:8px 0">
+          <li style="margin-bottom:6px">🎤 <strong>จัดการบทความ</strong> — เปิดหน้าต่างรายชื่อบทความในห้องนั้น</li>
+          <li style="margin-bottom:6px">📊 <strong>ดูคะแนน</strong> — เปิดตารางสรุปคะแนนและค่าเฉลี่ยของทุกบทความในห้อง</li>
+          <li style="margin-bottom:6px">✏️ <strong>แก้ไข</strong> — เปิดฟอร์มแก้ไขข้อมูลห้อง</li>
+          <li style="margin-bottom:6px">🗑️ <strong>ลบ</strong> — ลบห้อง (จะมีหน้าต่างยืนยัน)</li>
+        </ul>
+      </div>
+
+      <!-- 3.3 บทความ -->
+      <div class="subsection">
+        <h3><span class="icon" style="background:#fdf4ff;color:var(--purple)">🎙️</span> การจัดการบทความนำเสนอ</h3>
+
+        <p style="margin-bottom:10px">คลิก <strong>"จัดการบทความ"</strong> บนการ์ดห้องเพื่อเข้าจัดการบทความในห้องนั้น</p>
+
+        <p><strong>การเพิ่มบทความ</strong></p>
+        <ol class="steps">
+          <li>คลิก <strong>"+ เพิ่มบทความ"</strong> ในหน้าต่างจัดการ</li>
+          <li>กรอกชื่อบทความภาษาไทย (บังคับ) และภาษาอังกฤษ (ถ้ามี)</li>
+          <li>ระบุ <strong>ลำดับที่</strong> ตามโปรแกรมนำเสนอ</li>
+          <li>เลือก <strong>ประเภทการประเมิน</strong>: วิจัย (Research) หรือสร้างสรรค์ (Creative) — <em>สำคัญมาก ส่งผลต่อเกณฑ์ที่ใช้ประเมิน</em></li>
+          <li>กรอกชื่อผู้เขียน อีเมล ประเภทบทความ และหมายเหตุ (ตามต้องการ)</li>
+          <li>คลิก <strong>"บันทึก"</strong></li>
+        </ol>
+
+        <div class="notice info">
+          <span class="notice-icon">ℹ️</span>
+          <div><strong>ประเภทการประเมิน</strong> กำหนดว่าผู้ทรงคุณวุฒิจะเห็นเกณฑ์ชุดใด: บทความวิจัยใช้เกณฑ์ 6 ด้าน (100 คะแนน) ส่วนผลงานสร้างสรรค์ใช้เกณฑ์ 5 ด้าน (100 คะแนน)</div>
+        </div>
+      </div>
+
+      <!-- 3.4 ผู้ทรงคุณวุฒิ -->
+      <div class="subsection">
+        <h3><span class="icon" style="background:#f0fdf4;color:var(--green)">👤</span> การจัดการผู้ทรงคุณวุฒิ</h3>
+
+        <p style="margin-bottom:10px">คลิกแท็บ <strong>"ผู้ทรงคุณวุฒิ"</strong> เพื่อดูรายชื่อและจัดการ Session Chair ทั้งหมด</p>
+
+        <p><strong>การเพิ่มผู้ทรงคุณวุฒิ</strong></p>
+        <ol class="steps">
+          <li>คลิกปุ่ม <strong>"+ เพิ่มผู้ทรงคุณวุฒิ"</strong></li>
+          <li>กรอกอีเมล และชื่อ-สกุล (บังคับ)</li>
+          <li>ตั้งรหัสผ่าน หรือใช้ค่าเริ่มต้น <code>reviewer#action4</code></li>
+          <li>ติ๊กช่อง <strong>ห้องที่รับผิดชอบ</strong> (เลือกได้หลายห้อง แนะนำห้องละ 2 คน)</li>
+          <li>คลิก <strong>"บันทึก"</strong></li>
+        </ol>
+
+        <div class="notice warning">
+          <span class="notice-icon">⚠️</span>
+          <div>แนะนำให้แต่ละห้องมีผู้ทรงคุณวุฒิ <strong>2 คน</strong> เพื่อความน่าเชื่อถือของผลการประเมิน คะแนนสุดท้ายจะเป็นค่าเฉลี่ยจากทั้ง 2 คน</div>
+        </div>
+
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>คอลัมน์</th><th>ความหมาย</th></tr></thead>
+            <tbody>
+              <tr><td>ชื่อ-สกุล</td><td>ชื่อที่แสดงในระบบ</td></tr>
+              <tr><td>อีเมล</td><td>ใช้สำหรับเข้าสู่ระบบ (ไม่สามารถแก้ไขได้หลังบันทึก)</td></tr>
+              <tr><td>รหัสผ่าน</td><td>รหัสที่ใช้ Login</td></tr>
+              <tr><td>ห้องที่รับผิดชอบ</td><td>แสดงเป็น Badge สีน้ำเงิน</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── 4. Reviewer ─── -->
+    <div class="section" id="reviewer">
+      <div class="section-label">หัวข้อที่ 4</div>
+      <h2>ผู้ทรงคุณวุฒิ (Session Chair)</h2>
+
+      <p>เมื่อเข้าสู่ระบบในฐานะ Reviewer จะพบรายการห้องที่ได้รับมอบหมาย พร้อมบทความและสถานะการประเมิน</p>
+
+      <!-- ขั้นตอนการประเมิน -->
+      <div class="subsection">
+        <h3><span class="icon" style="background:#fffbeb;color:var(--amber)">⭐</span> ขั้นตอนการประเมินบทความ</h3>
+
+        <div class="flow">
+          <div class="flow-step">
+            <span class="fs-num">ขั้นที่ 1</span>
+            <span class="fs-title">เลือกบทความ</span>
+            <span class="fs-desc">คลิกปุ่ม "ประเมิน" ข้างบทความที่ต้องการ</span>
+          </div>
+          <div class="flow-step">
+            <span class="fs-num">ขั้นที่ 2</span>
+            <span class="fs-title">ให้คะแนน</span>
+            <span class="fs-desc">กรอกคะแนนแต่ละเกณฑ์ หรือเลือกจาก Rubric</span>
+          </div>
+          <div class="flow-step">
+            <span class="fs-num">ขั้นที่ 3</span>
+            <span class="fs-title">ข้อเสนอแนะ</span>
+            <span class="fs-desc">พิมพ์ความคิดเห็น (ไม่บังคับ)</span>
+          </div>
+          <div class="flow-step">
+            <span class="fs-num">ขั้นที่ 4</span>
+            <span class="fs-title">ตรวจสอบ</span>
+            <span class="fs-desc">คลิก "ตรวจสอบและส่งผล" ดูสรุปคะแนน</span>
+          </div>
+          <div class="flow-step">
+            <span class="fs-num">ขั้นที่ 5</span>
+            <span class="fs-title">ยืนยันส่ง</span>
+            <span class="fs-desc">คลิก "ยืนยันส่งผล" เพื่อบันทึกถาวร</span>
+          </div>
+        </div>
+
+        <div class="notice danger">
+          <span class="notice-icon">🚫</span>
+          <div><strong>สำคัญ:</strong> เมื่อยืนยันส่งผลการประเมินแล้ว <strong>จะไม่สามารถแก้ไขได้อีก</strong> กรุณาตรวจสอบคะแนนทุกเกณฑ์ให้ถูกต้องก่อนกดยืนยัน</div>
+        </div>
+      </div>
+
+      <!-- การใช้ Rubric -->
+      <div class="subsection">
+        <h3><span class="icon" style="background:#eff6ff;color:var(--blue)">📖</span> การใช้งาน Rubric (เกณฑ์การให้คะแนน)</h3>
+
+        <p style="margin-bottom:10px">แต่ละเกณฑ์มีปุ่ม <strong>"ดูเกณฑ์การให้คะแนน (Rubric)"</strong> คลิกเพื่อขยายดูรายละเอียด 4 ระดับ</p>
+
+        <div class="tbl-wrap">
+          <table class="rubric-table">
+            <thead>
+              <tr><th>ระดับ</th><th>ช่วงคะแนน</th><th>ความหมาย</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge badge-green">ดีเยี่ยม</span></td>
+                <td>ช่วงสูงสุด</td>
+                <td>ทำได้ครบถ้วน ชัดเจน และมีคุณภาพสูง</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-blue">ดี</span></td>
+                <td>ช่วงสูง</td>
+                <td>ทำได้ดีในส่วนใหญ่ แต่ยังมีจุดที่ขาดบ้าง</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-amber">พอใช้</span></td>
+                <td>ช่วงกลาง</td>
+                <td>ทำได้บางส่วน ยังต้องการการพัฒนา</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-red">ต้องปรับปรุง</span></td>
+                <td>ช่วงต่ำ</td>
+                <td>ยังไม่สามารถทำได้ตามเกณฑ์ที่กำหนด</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notice success">
+          <span class="notice-icon">💡</span>
+          <div>คลิกที่การ์ด Rubric ระดับใดก็ได้ ระบบจะ <strong>เติมคะแนนให้อัตโนมัติ</strong> โดยใช้คะแนนสูงสุดของระดับนั้น ท่านสามารถปรับเพิ่ม/ลดได้ในช่องกรอกตัวเลข</div>
+        </div>
+      </div>
+
+      <!-- ดูผลที่ส่งแล้ว -->
+      <div class="subsection">
+        <h3><span class="icon" style="background:#f0fdf4;color:var(--teal)">✅</span> การดูผลการประเมินที่ส่งแล้ว</h3>
+        <p>บทความที่ส่งผลแล้วจะแสดงปุ่ม <span class="badge badge-green">ประเมินแล้ว · ดูผล</span> คลิกเพื่อดูรายละเอียดคะแนนแต่ละเกณฑ์ ค่าเฉลี่ย และข้อเสนอแนะที่เคยกรอกไว้</p>
+      </div>
+
+      <!-- แถบความคืบหน้า -->
+      <div class="subsection">
+        <h3><span class="icon" style="background:#fffbeb;color:var(--amber)">📈</span> แถบความคืบหน้า</h3>
+        <p>ด้านบนของการ์ดแต่ละห้องมีแถบแสดงเปอร์เซ็นต์การประเมินที่เสร็จสิ้น เปลี่ยนสีจากแดง → เหลือง → เขียวเมื่อครบ 100%</p>
+      </div>
+    </div>
+
+    <!-- ─── 5. เกณฑ์ประเมิน ─── -->
+    <div class="section" id="criteria">
+      <div class="section-label">หัวข้อที่ 5</div>
+      <h2>เกณฑ์การประเมิน (Rubric)</h2>
+
+      <!-- Research -->
+      <div class="subsection">
+        <h3><span class="icon" style="background:#eff6ff;color:var(--blue)">🔬</span> เกณฑ์ผลงานวิจัยทางดนตรี (Research)</h3>
+
+        <div class="crit-group">
+          <div class="crit-group-label research">🔬 ผลงานวิจัยทางดนตรี — รวม 100 คะแนน (6 เกณฑ์)</div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>#</th><th>เกณฑ์</th><th>คะแนน</th><th>สิ่งที่ประเมิน</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>การตั้งโจทย์และแนวคิดวิจัย</td><td><span class="badge badge-blue">20</span></td><td>ระบุปัญหา วัตถุประสงค์ และประโยชน์ของงานได้ชัดเจน</td></tr>
+                <tr><td>2</td><td>ระเบียบวิธีและกระบวนการวิจัย</td><td><span class="badge badge-blue">25</span></td><td>เลือกวิธีการวิจัยเหมาะสม บันทึกขั้นตอนครบถ้วน</td></tr>
+                <tr><td>3</td><td>การวิเคราะห์และการตีความข้อมูล</td><td><span class="badge badge-blue">15</span></td><td>วิเคราะห์ข้อมูลดนตรีได้เป็นระบบ มีข้อค้นพบชัดเจน</td></tr>
+                <tr><td>4</td><td>การสรุปและการอภิปรายผล</td><td><span class="badge badge-blue">15</span></td><td>สรุปผลครบถ้วน เชื่อมโยงกับความรู้ดนตรีที่เกี่ยวข้อง</td></tr>
+                <tr><td>5</td><td>การนำเสนอและการสื่อสาร</td><td><span class="badge badge-blue">10</span></td><td>นำเสนอชัดเจน เข้าใจง่าย น่าสนใจ</td></tr>
+                <tr><td>6</td><td>จริยธรรมและความรับผิดชอบทางวิชาการ</td><td><span class="badge badge-blue">15</span></td><td>อ้างอิงถูกต้อง ตอบคำถามได้มั่นใจและสุภาพ</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Creative -->
+      <div class="subsection">
+        <h3><span class="icon" style="background:#f5f3ff;color:var(--purple)">🎨</span> เกณฑ์ผลงานสร้างสรรค์ทางดนตรี (Creative)</h3>
+
+        <div class="crit-group">
+          <div class="crit-group-label creative">🎨 ผลงานสร้างสรรค์ทางดนตรี — รวม 100 คะแนน (5 เกณฑ์)</div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>#</th><th>เกณฑ์</th><th>คะแนน</th><th>สิ่งที่ประเมิน</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>แนวคิดและที่มาของผลงาน</td><td><span class="badge badge-purple">20</span></td><td>ระบุที่มา เป้าหมาย และคุณค่าของผลงานได้ชัดเจน</td></tr>
+                <tr><td>2</td><td>กระบวนการทำงานและขั้นตอนการสร้างสรรค์</td><td><span class="badge badge-purple">25</span></td><td>บันทึกขั้นตอนครบ เห็นพัฒนาการของงาน</td></tr>
+                <tr><td>3</td><td>การสะท้อนและสิ่งที่ได้เรียนรู้</td><td><span class="badge badge-purple">25</span></td><td>ระบุปัญหาที่พบและการแก้ไข สะท้อนการเติบโตด้านดนตรี</td></tr>
+                <tr><td>4</td><td>การนำเสนอและการสื่อสาร</td><td><span class="badge badge-purple">15</span></td><td>นำเสนอชัดเจน เชื่อมโยงกับความรู้ดนตรี</td></tr>
+                <tr><td>5</td><td>จริยธรรมและความรับผิดชอบทางวิชาการ</td><td><span class="badge badge-purple">15</span></td><td>อ้างอิงถูกต้อง ตอบคำถามอย่างมั่นใจ</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin จัดการเกณฑ์ -->
+      <div class="subsection">
+        <h3><span class="icon" style="background:#f1f5f9;color:var(--muted)">⚙️</span> การจัดการเกณฑ์ (Admin เท่านั้น)</h3>
+        <p>คณะกรรมการสามารถเพิ่ม แก้ไข หรือลบเกณฑ์ได้จากแท็บ "เกณฑ์ประเมิน" โดยต้องระบุ ชื่อเกณฑ์ คำอธิบาย คะแนนเต็ม และประเภท (Research / Creative)</p>
+        <div class="notice warning">
+          <span class="notice-icon">⚠️</span>
+          <div>การแก้ไขเกณฑ์หลังจากเริ่มการประเมินแล้ว อาจทำให้ผลคะแนนไม่สอดคล้องกับเกณฑ์ใหม่ได้</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── 6. ผลการประเมิน ─── -->
+    <div class="section" id="results">
+      <div class="section-label">หัวข้อที่ 6</div>
+      <h2>ผลการประเมินและการจัดลำดับรางวัล</h2>
+
+      <p>แท็บ <strong>"ผลการประเมิน"</strong> ใน Admin Dashboard สรุปคะแนนและจัดอันดับผลงานโดยอัตโนมัติ</p>
+
+      <div class="subsection">
+        <h3><span class="icon" style="background:#fffbeb;color:var(--amber)">🏆</span> วิธีคำนวณคะแนน</h3>
+
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>ขั้นตอน</th><th>รายละเอียด</th></tr></thead>
+            <tbody>
+              <tr><td>คะแนนรวมต่อผู้ประเมิน</td><td>รวมคะแนนทุกเกณฑ์ของผู้ทรงคุณวุฒิแต่ละคน</td></tr>
+              <tr><td>คิดเป็นร้อยละ</td><td>คะแนนรวม ÷ คะแนนเต็ม × 100</td></tr>
+              <tr><td>คะแนนเฉลี่ย</td><td>ค่าเฉลี่ยของร้อยละจากผู้ทรงคุณวุฒิทุกคนที่ประเมิน</td></tr>
+              <tr><td>การจัดอันดับ</td><td>เรียงลำดับจากคะแนนเฉลี่ยสูงสุด → ต่ำสุด</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="margin-top:12px"><strong>สีแสดงระดับคะแนน:</strong>
+          <span class="badge badge-green" style="margin-left:6px">≥ 80% ดีเยี่ยม</span>
+          <span class="badge badge-amber" style="margin-left:6px">60–79% ดี</span>
+          <span class="badge badge-red" style="margin-left:6px">&lt; 60% ต้องปรับปรุง</span>
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3><span class="icon" style="background:#eff6ff;color:var(--blue)">📋</span> มุมมองการจัดอันดับ</h3>
+
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>มุมมอง</th><th>รายละเอียด</th></tr></thead>
+            <tbody>
+              <tr><td><strong>ภาพรวม</strong></td><td>จัดอันดับบทความทั้งหมดในระบบรวมกัน แสดงเหรียญ 🥇🥈🥉 สำหรับ 3 อันดับแรก</td></tr>
+              <tr><td><strong>จัดอันดับแยกห้อง</strong></td><td>แสดงผลการจัดอันดับแยกตามแต่ละห้องนำเสนอ สะดวกสำหรับมอบรางวัลระดับห้อง</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3><span class="icon" style="background:#f0fdf4;color:var(--green)">📊</span> ดูคะแนนรายห้อง (Admin)</h3>
+        <p>คลิก <strong>"ดูคะแนน"</strong> บนการ์ดห้องเพื่อดูตารางละเอียด แสดงคะแนนของแต่ละผู้ทรงคุณวุฒิ พร้อมค่าเฉลี่ย สถานะ และวันที่ประเมิน</p>
+      </div>
+    </div>
+
+    <!-- ─── 7. CSV ─── -->
+    <div class="section" id="csv">
+      <div class="section-label">หัวข้อที่ 7</div>
+      <h2>การนำเข้า / ส่งออกข้อมูล CSV</h2>
+
+      <p>ระบบรองรับการนำเข้าข้อมูลจำนวนมากผ่านไฟล์ CSV และส่งออกผลการประเมินเป็นไฟล์ CSV สำหรับวิเคราะห์เพิ่มเติม</p>
+
+      <!-- นำเข้า -->
+      <div class="subsection">
+        <h3><span class="icon" style="background:#fff7ed;color:var(--amber)">📤</span> การนำเข้าข้อมูล (Import CSV)</h3>
+
+        <p style="margin-bottom:10px">ใช้สำหรับเพิ่มห้องและบทความจำนวนมากในคราวเดียว ปรากฏในแถบด้านบนของแท็บ "ห้องนำเสนอ"</p>
+
+        <p><strong>วิธีนำเข้าห้อง</strong></p>
+        <ol class="steps">
+          <li>คลิก <strong>"Template ห้อง"</strong> เพื่อดาวน์โหลดไฟล์ตัวอย่าง</li>
+          <li>เปิดไฟล์ด้วย Excel หรือ Google Sheets และกรอกข้อมูล</li>
+          <li>บันทึกเป็น <code>.csv</code> (UTF-8)</li>
+          <li>คลิก <strong>"นำเข้าห้อง (CSV)"</strong> แล้วเลือกไฟล์</li>
+          <li>รอระบบประมวลผลและแสดงผลสำเร็จ</li>
+        </ol>
+
+        <p style="margin-top:14px"><strong>โครงสร้างไฟล์ Template ห้อง</strong></p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>คอลัมน์</th><th>บังคับ</th><th>ตัวอย่าง</th></tr></thead>
+            <tbody>
+              <tr><td><code>roomName</code></td><td><span class="badge badge-red">บังคับ</span></td><td>ห้อง A — ดนตรีสากล</td></tr>
+              <tr><td><code>description</code></td><td>ไม่บังคับ</td><td>Music Theory &amp; Analysis</td></tr>
+              <tr><td><code>documentsUrl</code></td><td>ไม่บังคับ</td><td>https://drive.google.com/...</td></tr>
+              <tr><td><code>notes</code></td><td>ไม่บังคับ</td><td>อาคาร 1 ห้อง 101</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="margin-top:14px"><strong>โครงสร้างไฟล์ Template บทความ</strong></p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>คอลัมน์</th><th>บังคับ</th><th>ตัวอย่าง / ค่าที่รับได้</th></tr></thead>
+            <tbody>
+              <tr><td><code>roomName</code></td><td><span class="badge badge-red">บังคับ</span></td><td>ต้องตรงกับชื่อห้องในระบบ</td></tr>
+              <tr><td><code>orderNo</code></td><td>ไม่บังคับ</td><td>1, 2, 3 ...</td></tr>
+              <tr><td><code>title</code></td><td><span class="badge badge-red">บังคับ</span></td><td>ชื่อบทความภาษาไทย</td></tr>
+              <tr><td><code>titleEn</code></td><td>ไม่บังคับ</td><td>English Title</td></tr>
+              <tr><td><code>authors</code></td><td>ไม่บังคับ</td><td>สมชาย ดนตรีดี, สมหญิง ดนตรีงาม</td></tr>
+              <tr><td><code>evalType</code></td><td>ไม่บังคับ</td><td><code>research</code> หรือ <code>creative</code> (ค่าเริ่มต้น: research)</td></tr>
+              <tr><td><code>notes</code></td><td>ไม่บังคับ</td><td>ACT-001</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notice warning">
+          <span class="notice-icon">⚠️</span>
+          <div>ชื่อห้องในไฟล์บทความต้องตรงกับชื่อห้องที่มีอยู่ในระบบ ไม่เช่นนั้นบทความจะถูกข้ามไป</div>
+        </div>
+      </div>
+
+      <!-- ส่งออก -->
+      <div class="subsection">
+        <h3><span class="icon" style="background:#f0fdf4;color:var(--green)">📥</span> การส่งออกข้อมูล (Export CSV)</h3>
+
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>ปุ่ม</th><th>เนื้อหาที่ได้</th><th>ตำแหน่ง</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Export Ranking</strong></td><td>อันดับทุกบทความ พร้อมคะแนนเฉลี่ย</td><td>แท็บ "ผลการประเมิน"</td></tr>
+              <tr><td><strong>Export ทุกคะแนน</strong></td><td>คะแนนละเอียดทุกเกณฑ์จากทุกผู้ประเมิน</td><td>แท็บ "ผลการประเมิน"</td></tr>
+              <tr><td><strong>Export CSV ห้องนี้</strong></td><td>คะแนนเฉพาะห้องที่เลือก</td><td>หน้าต่างดูคะแนนรายห้อง</td></tr>
+              <tr><td><strong>Export (แยกห้อง)</strong></td><td>อันดับเฉพาะห้องนั้น</td><td>มุมมอง "จัดอันดับแยกห้อง"</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notice info">
+          <span class="notice-icon">ℹ️</span>
+          <div>ไฟล์ CSV ทุกไฟล์บันทึกด้วยรหัส <strong>UTF-8 BOM</strong> เพื่อให้ภาษาไทยแสดงผลถูกต้องใน Microsoft Excel</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── 8. FAQ ─── -->
+    <div class="section" id="faq">
+      <div class="section-label">หัวข้อที่ 8</div>
+      <h2>คำถามที่พบบ่อย (FAQ)</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">ลืมรหัสผ่านต้องทำอย่างไร?</div>
+        <div class="faq-a">กรุณาติดต่อคณะกรรมการจัดโครงการโดยตรง Admin สามารถแก้ไขรหัสผ่านของผู้ทรงคุณวุฒิได้จากแท็บ "ผู้ทรงคุณวุฒิ" โดยคลิก "แก้ไข" และกรอกรหัสผ่านใหม่</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">ส่งผลการประเมินไปแล้ว แต่ต้องการแก้ไข ทำได้หรือไม่?</div>
+        <div class="faq-a">ไม่ได้ ระบบออกแบบให้ส่งผลได้ครั้งเดียวเพื่อความน่าเชื่อถือของข้อมูล หากจำเป็นต้องแก้ไขกรุณาแจ้งคณะกรรมการ ซึ่งจะต้องดำเนินการแก้ไขในฐานข้อมูล Google Spreadsheet โดยตรง</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">บทความประเภท Research และ Creative ต่างกันอย่างไรในการประเมิน?</div>
+        <div class="faq-a">ต่างกันที่ชุดเกณฑ์ที่ใช้ประเมิน: Research ใช้ 6 เกณฑ์ เน้นกระบวนการวิจัยและการวิเคราะห์ข้อมูล ส่วน Creative ใช้ 5 เกณฑ์ เน้นกระบวนการสร้างสรรค์และการสะท้อนการเรียนรู้ ทั้งสองประเภทมีคะแนนรวม 100 คะแนนเท่ากัน</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">ผู้ทรงคุณวุฒิสามารถประเมินห้องที่ไม่ได้รับมอบหมายได้หรือไม่?</div>
+        <div class="faq-a">ไม่ได้ ระบบแสดงเฉพาะห้องที่มอบหมายให้แต่ละคนเท่านั้น คณะกรรมการต้องแก้ไขการมอบหมายห้องผ่านแท็บ "ผู้ทรงคุณวุฒิ" ก่อน</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">ผลการจัดอันดับรวมทั้ง Research และ Creative ไว้ด้วยกันหรือไม่?</div>
+        <div class="faq-a">ใช่ ในมุมมอง "ภาพรวม" จะรวมทุกบทความเข้าด้วยกัน แต่สามารถดูประเภทของแต่ละผลงานได้จาก Badge ที่แสดง หากต้องการแยกชัดเจนแนะนำใช้ Export CSV แล้วกรองใน Excel</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">นำเข้า CSV แล้วได้รับแจ้งว่า "ไม่พบห้อง" ต้องแก้ไขอย่างไร?</div>
+        <div class="faq-a">ตรวจสอบว่าคอลัมน์ <code>roomName</code> ในไฟล์บทความตรงกับชื่อห้องในระบบทุกตัวอักษร (รวมถึงช่องว่างและเครื่องหมายพิเศษ) แนะนำให้คัดลอกชื่อห้องจากระบบมาวางในไฟล์ CSV โดยตรง</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">ระบบรองรับผู้ทรงคุณวุฒิกี่คนต่อห้อง?</div>
+        <div class="faq-a">รองรับได้ไม่จำกัด แต่ <strong>แนะนำ 2 คน</strong> ต่อห้องเพื่อความน่าเชื่อถือ คะแนนสุดท้ายที่ใช้ในการจัดอันดับจะเป็นค่าเฉลี่ยจากผู้ทรงคุณวุฒิทุกคนที่ประเมินบทความนั้น</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">ไฟล์ CSV เปิดในภาษาไทยไม่แสดงผล ต้องทำอย่างไร?</div>
+        <div class="faq-a">เปิดไฟล์ผ่าน <strong>Microsoft Excel</strong> และเลือก Import Data → Comma Delimited → Encoding: UTF-8 หรือถ้าใช้ Google Sheets ให้อัปโหลดไฟล์ผ่าน Google Drive แล้วเปิดด้วย Google Sheets ซึ่งจะรองรับ UTF-8 อัตโนมัติ</div>
+      </div>
+
+    </div>
+    <!-- ─── Divider ─── -->
+    <div class="divider"></div>
+    <p style="text-align:center;font-size:.82rem;color:var(--muted)">สอบถามข้อมูลเพิ่มเติมติดต่อคณะกรรมการจัดโครงการ ACTION 4th<br>
+    อีเมล: <strong>action4@kku.ac.th</strong></p>
+
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <strong>คู่มือการใช้งาน — ระบบประเมินการนำเสนอผลงาน ACTION 4th v2.0</strong><br>
+  คณะศิลปกรรมศาสตร์ มหาวิทยาลัยขอนแก่น &nbsp;·&nbsp; Copyright &copy; 2569
+</div>
+
+</body>
+</html>
